@@ -316,6 +316,245 @@ int mayor = -1, numero, ganador;
 
 };
 
+
+
+class blackjack{
+    public:
+
+
+void imprimir_vec(int v[],int n){
+    srand(time(NULL));
+    for(int i=1;i<=n;i++){
+        cout << v[i]<<",";
+    }
+    cout << endl;
+}
+
+
+
+
+
+class cartas{
+    public:
+    int maso=21;
+	int num[21];
+	//string color="color";
+	
+	
+    
+    
+   
+    
+ void al_ram_vec1(int v[],int n,int n1,int n2)
+{
+    srand(time(NULL));
+    srand(time(NULL));
+    cout << "Ingresando elementos:";
+    for(int i=0;i<n;i++){
+        
+         v[i]=n1+rand()%(n2+1-n1);
+    }
+}
+
+
+
+
+
+ void al_ram_vec2(int v[],int n,int n1,int n2)
+{
+    srand(time(NULL));
+    cout << "Ingresando elementos:";
+    srand(time(NULL));
+    for(int i=0;i<n;i++){
+         v[i]=(n1+rand()%(n2+1-n1))*1.56666;
+    }
+}
+
+
+
+
+
+
+};
+
+
+
+
+
+
+int DifsumaCartas(int carta1,int carta2){
+    
+        int a=((carta1+carta2)-21);
+        if(a<0){
+            return (a*-1);
+        }
+        else{
+            return a;
+        }
+
+    }
+
+
+
+void round_G(int Nronda, int &score1,int &score2, int carta1, int carta2,int carta3,int carta4){
+    //se preciona team1 IF
+    int ScTeam1=DifsumaCartas(carta1,carta2);
+    //se preciona team2 ELSE IF
+    int ScTeam2=DifsumaCartas(carta3,carta4);
+
+    cout<<ScTeam1<<endl;
+    cout<<ScTeam2<<endl;
+
+    
+
+    if(ScTeam1<ScTeam2){
+
+        cout<<endl;
+        cout<<endl;
+        cout<<"gana el jugador 1"<<endl;
+        
+        score1=score1+10;
+
+        cout<<"pierde el jugador 2 "<<endl;
+        
+        score2=score2-5;
+    }
+
+    else if (ScTeam1>ScTeam2){
+        cout<<endl;
+        cout<<endl;
+        cout<<"gana el jugador 2"<<endl;
+        
+        score2=score2+10;
+
+        cout<<"pierde el jugador 1 "<<endl;
+        
+        score1=score1-5;
+    }
+
+
+    else if ((carta1+carta2)>21&&(carta3+carta4)>21){
+        cout<<endl;
+        cout<<endl;
+        cout<<"pierden ambos jugadores "<<endl;
+        
+        score1=score1-5;
+        score2=score2-5;
+    }
+
+
+    else if ((carta1+carta2)>21){
+        cout<<endl;
+        cout<<endl;
+        cout<<"pierde el jugador 1 "<<endl;
+        
+        score1=score1-5;
+
+        cout<<"gana el jugador 2"<<endl;
+        
+        score2=score2+10;
+
+    }
+
+    else if ((carta3+carta4)>21){
+        cout<<endl;
+        cout<<endl;
+        cout<<"pierde el jugador 2 "<<endl;
+        
+        score2=score2-5;
+
+        cout<<"gana el jugador 1"<<endl;
+        
+        score1=score1+10;
+    }
+
+    else{
+
+        cout<<endl;
+        cout<<"GANA LA MESA"<<endl;
+        cout<<endl;
+    }
+
+}
+
+
+
+void main(){
+
+cout<<"|             BIENVENIDO A BLACKJACK      |"<<endl;
+cout<<"1. Jugar"<<endl;
+cout<<"2. SALIR"<<endl;
+int opc;
+cin>>opc;
+cartas team1;
+        //crear(team1.num);
+         cartas team2;
+         int sc1=0,sc2=0;
+
+
+
+switch(opc){
+		case 1:
+		
+    srand(time(NULL));
+		srand(time(NULL));
+
+
+        
+         //crear(team2.num);
+
+    //setCartas(NumeroJugadores);
+    cout<<"se comenzara a barajar"<<endl;
+    int c1[21];
+    //crear(team1.num);
+    		srand(time(NULL));
+
+    team1.al_ram_vec1(team1.num,20,1,14);
+    cout<<"baraja del jugador1: "<<endl;
+    imprimir_vec(team1.num,19);
+
+    cout<<endl;
+
+    
+    
+
+    int c2[20];
+    
+    //crear(team2.num);
+    srand(time(NULL));
+    team2.al_ram_vec2(team2.num,20,1,14);
+    cout<<"baraja del jugador2: "<<endl;
+
+    imprimir_vec(team2.num,19);
+
+int a;
+    cout<<"se reparten cartas"<<endl;
+    for (int x=1;x<10;x++){
+        cout<<"Lanzando las cartas: "<<endl;
+        
+        int carta1=team1.num[2*x-1];
+        int carta2=team1.num[2*x];
+        int carta3=team2.num[2*x-1];
+        int carta4=team2.num[2*x];
+
+        round_G(x,sc1,sc2,carta1,carta2,carta3,carta4);
+        cout<<"La puntuacion del jugador 1 es: "<<sc1<<"  "<<"La puntuacion del jugador 2 es: "<<sc2<<endl<<endl<<endl; 
+    }
+			break;
+
+		case 2:
+			
+			break;
+
+		
+		}
+
+}
+};
+
+
+
+
 int main(){
     nervioso nervio;
     guess guess1;
@@ -326,7 +565,7 @@ int main(){
     my_ruleta.ganar();//llamado a la funcion ganar
     my_ruleta.generar();//llamado a la funcion generar
 
-
-
+    blackjack black1;
+    black1.main();
 	return 0;
 }
