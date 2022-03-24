@@ -14,6 +14,9 @@
 
 using namespace std;
 
+class nervioso{
+    public:
+
 bool leerLetra(char letraLeida){
 	int c;   
     static struct termios oldt, newt;
@@ -63,7 +66,7 @@ cout<<endl<<"Para aplastar carta con mano: ";
 	
 }
 
-class nervioso{
+void principal(){
 	int opc,num,jugadorAlea, cartaLanzada=0,cantidadCartas,verificacionCarta,segundos=0;
 	string jugador1,jugador2,jugador3,jugador4,random;
 	char lanzarCarta,let;
@@ -98,10 +101,12 @@ class nervioso{
 
 		case 2: break;
 	}
-
+}
 };
 
 
+class guess{
+public:
 void lista(){
 printf("OPCIONES DISPONIBLES \n");
 printf("1=do \n");
@@ -127,7 +132,7 @@ class numero_aleatorio{
        // string nombres[7]={"DO","RE","MI","FA","SOL","LA","SI"};
 };
 
-class guess{
+void principal(){
 int x;
 int a=0;
 int nta;
@@ -242,7 +247,10 @@ a=0;
 }
 else {
 printf("\n ADIOS \n");
- return 0;}
+break;
+ 
+ }
+}
 }
 };
 
@@ -309,12 +317,16 @@ int mayor = -1, numero, ganador;
 };
 
 int main(){
+    nervioso nervio;
+    guess guess1;
+    nervio.principal();
+    guess1.principal();
     rulet my_ruleta;//llamar a la clase
     //my_ruleta.generar();//llamado a la funcion generar
     my_ruleta.ganar();//llamado a la funcion ganar
     my_ruleta.generar();//llamado a la funcion generar
 
-    
+
 
 	return 0;
 }
