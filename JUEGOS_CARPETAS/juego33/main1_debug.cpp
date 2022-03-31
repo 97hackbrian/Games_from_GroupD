@@ -1,17 +1,6 @@
-//sudo apt-get install libsfml-dev
-//g++ main1.cpp -o compilacion -lsfml-graphics -lsfml-window -lsfml-system
-//./compilacion
-
-//1. #include <ctime>   LIBRERIA
-//2. sf:Event event;      LINEA 154
-//3. for (saiz_t i = 0; i < 10; ++i)      LINEA 48
-//4. gotoxy gameover;               LINEA 144
-//5. backgroundTexture.loadFromFile("imagenesf/Background.png");       linea 13
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <random>
-#include <ctime>
 
 int main()
 {
@@ -21,7 +10,7 @@ int main()
     sf::Texture playerTexture;
     sf::Texture platformTexture;
 
-    backgroundTexture.loadFromFile("imagenesf/background.png");
+    backgroundTexture.loadFromFile("imagenesf/Background.png");
     playerTexture.loadFromFile("imagenesf/doodle.png");
     platformTexture.loadFromFile("imagenesf/platform.png");
     sf::Sprite background(backgroundTexture);
@@ -56,7 +45,7 @@ gameoverBackground.setFillColor(sf::Color::White);
 	std::uniform_int_distribution<unsigned> x(0, 500 - platformTexture.getSize().x);
 	std::uniform_int_distribution<unsigned> y(100, 700);
 	std::default_random_engine e(time(0));
-	for (size_t i = 0; i < 10; ++i)
+	for (saiz_t i = 0; i < 10; ++i)
 	{
 		platformPosition[i].x = x(e);
 		platformPosition[i].y = y(e);
@@ -152,7 +141,7 @@ while (window.pollEvent(event))
         {
             gameoverText.setPosition(30, 200);
 scoreText.setPosition(150, 400);
-            goto gameover;
+            gotoxy gameover;
         }
         window.draw(scoreText);
         window.display();
@@ -162,7 +151,7 @@ scoreText.setPosition(150, 400);
 gameover:
     while (window.isOpen())
     {
-        sf::Event event;
+        sf:Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)

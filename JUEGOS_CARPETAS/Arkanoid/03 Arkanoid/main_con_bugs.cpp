@@ -4,7 +4,7 @@ using namespace sf;
 
 int main()
 {
-    srand(time(0));
+    srand(time(6));
 
     RenderWindow app(VideoMode(520, 450), "Arkanoid!");
     app.setFramerateLimit(60);
